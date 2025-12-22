@@ -38,8 +38,19 @@ func (a *ArrayList) Get(idx int) int {
 }
 
 func (a *ArrayList) RemoveAt(idx int) int {
+	if idx < 0 || idx > a.length {
+		return -1
+	}
+
 	value := a.arr[idx]
-	a.arr[idx] = -1
+
+	i := idx
+	for ; i < a.length-1; i++ {
+		a.arr[i] = a.arr[i+1]
+	}
+
+	a.arr[i] = -1
+
 	a.length--
 	return value
 }
@@ -49,6 +60,9 @@ func (a *ArrayList) Remove(value int) int {
 		if a.arr[i] == value {
 			val := a.arr[i]
 			a.arr[i] = -1
+			for j := i; i < a.length-1; i++ {
+				a.arr[j] = a.arr[j+1]
+			}
 			a.length--
 			return val
 		}
@@ -62,8 +76,15 @@ func (a *ArrayList) Length() int {
 }
 
 func (a *ArrayList) Prepend(value int) {
-	if a.length == 0 {
-		a.length = 1
+	if a.length == a.size {
+		//throw some error
+		return
 	}
+
+	for i := a.length; i > 0; i-- {
+		a.arr[i] = a.arr[i-1]
+	}
+
 	a.arr[0] = value
+	a.length++
 }
