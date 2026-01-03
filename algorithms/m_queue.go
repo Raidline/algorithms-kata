@@ -1,16 +1,13 @@
 package algorithms
 
-// should be generic, but i do not want to deal with go generics
-// single linked list
-type node struct {
-	value int
-	next  *node
-}
+import (
+	"algos/kata/algorithms/model"
+)
 
 type MQueue struct {
 	Length int
-	head   *node
-	tail   *node
+	head   *model.Node
+	tail   *model.Node
 }
 
 func NewQueue() *MQueue {
@@ -30,7 +27,7 @@ func (q *MQueue) Enqueue(value int) {
 		return
 	}
 
-	q.tail.next = n
+	q.tail.Next = n
 	q.tail = n
 }
 
@@ -41,27 +38,27 @@ func (q *MQueue) Deque() int {
 	q.Length--
 
 	head := q.head
-	q.head = q.head.next
+	q.head = q.head.Next
 
-	head.next = nil
+	head.Next = nil
 
-	return head.value
+	return head.Value
 }
 
 func (q *MQueue) Peek() int {
-	return q.head.value
+	return q.head.Value
 }
 
-func createTail(value int) *node {
-	return &node{
-		value: value,
-		next:  nil,
+func createTail(value int) *model.Node {
+	return &model.Node{
+		Value: value,
+		Next:  nil,
 	}
 }
 
-func createNode(value int, next *node) *node {
-	return &node{
-		value: value,
-		next:  next,
+func createNode(value int, next *model.Node) *model.Node {
+	return &model.Node{
+		Value: value,
+		Next:  next,
 	}
 }
