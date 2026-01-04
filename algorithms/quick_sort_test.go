@@ -1,6 +1,9 @@
 package algorithms
 
-import "testing"
+import (
+	"algos/kata/algorithms/utils"
+	"testing"
+)
 
 func TestQuickSort(t *testing.T) {
 	arr := []int{9, 420, 7, 4, 69, 3, 42}
@@ -8,10 +11,5 @@ func TestQuickSort(t *testing.T) {
 
 	QuickSort(arr)
 
-	for i := range expected {
-		if arr[i] != expected[i] {
-			t.Errorf("Testing QuickSort, got %d, want %d at position %d", arr[i], expected[i], i)
-			t.FailNow()
-		}
-	}
+	utils.AssertArrays(t, "QuickSort", expected, arr)
 }
