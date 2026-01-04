@@ -7,11 +7,13 @@ func walkPreOrder(curr *model.BinaryNode, path []int) []int {
 		return path
 	}
 
-	//pre
+	//pre -> for the other types of traversal just move this to the the correct lines
 	path = append(path, curr.Value)
 	//recurse
 	path = walkPreOrder(curr.Left, path)
+	// path = append(path, curr.Value) -> inOrder
 	path = walkPreOrder(curr.Right, path)
+	//path = append(path, curr.Value) -> postOrder
 	// post
 	return path
 }
