@@ -13,8 +13,10 @@ func TestBtBts(t *testing.T) {
 	}
 	if !Bfs(tree, 7) {
 		t.Errorf("Testing Breath First Search, did not find 7")
+		t.FailNow()
 	}
 	if Bfs(tree, 69) {
 		t.Errorf("Testing Breath First Search, found 69 and was not supposed to")
+		t.FailNow()
 	}
 }
