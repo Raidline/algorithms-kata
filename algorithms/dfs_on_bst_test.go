@@ -12,12 +12,12 @@ func TestDfsOnBst(t *testing.T) {
 		t.FailNow()
 	}
 
-	if DepthFirstSearch(utils.GenerateTree(), 7) {
+	if !DepthFirstSearch(utils.GenerateTree(), 7) {
 		t.Errorf("Testing Finding 7 on BST by DFS, got true want false")
 		t.FailNow()
 	}
 
-	if !DepthFirstSearch(utils.GenerateTree(), 69) {
+	if DepthFirstSearch(utils.GenerateTree(), 69) {
 		t.Errorf("Testing Finding 69 on BST by DFS, got false want true")
 		t.FailNow()
 	}
