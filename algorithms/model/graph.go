@@ -1,14 +1,14 @@
 package model
 
 type GraphEdge struct {
-	To   int
-	From int
+	To     int
+	Weight int
 }
 
 type WeightedAdjacencyList struct {
-	graph [][]GraphEdge
+	Graph [][]GraphEdge
 }
 
 type WeightedAdjacencyMatrix struct {
-	graph [][]int
+	Graph [][]int
 }
