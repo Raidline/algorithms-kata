@@ -60,12 +60,53 @@ func List1() model.WeightedAdjacencyList {
 //
 //	\   v      v        v
 //	 >(2) --> (3) <----(6)
+func List2() model.WeightedAdjacencyList {
+	list2 := model.WeightedAdjacencyList{}
+	list2.Graph = append(list2.Graph, []model.GraphEdge{
+		{To: 1, Weight: 3},
+		{To: 2, Weight: 1},
+	})
+	list2.Graph = append(list2.Graph, []model.GraphEdge{
+		{To: 4, Weight: 1},
+	})
+
+	list2.Graph = append(list2.Graph, []model.GraphEdge{
+		{To: 3, Weight: 7},
+	})
+
+	list2.Graph = append(list2.Graph, []model.GraphEdge{})
+
+	list2.Graph = append(list2.Graph, []model.GraphEdge{
+		{To: 1, Weight: 1},
+		{To: 3, Weight: 5},
+		{To: 5, Weight: 2},
+	})
+
+	list2.Graph = append(list2.Graph, []model.GraphEdge{
+		{To: 2, Weight: 18},
+		{To: 6, Weight: 1},
+	})
+
+	list2.Graph = append(list2.Graph, []model.GraphEdge{
+		{To: 3, Weight: 1},
+	})
+
+	return list2
+}
+
+//	 >(1)<--->(4) ---->(5)
+//	/          |       /|
+//
+// (0)     ------|------- |
+//
+//	\   v      v        v
+//	 >(2) --> (3) <----(6)
 func Matrix2() model.WeightedAdjacencyMatrix {
 	matrix := model.WeightedAdjacencyMatrix{}
 
 	//the outer index is the node we are seeing
 	// each index is other node in the graph
-	// the value in the index is the weight related to that node from the outer index (curr node)
+	// the value in the index is the Weight related To that node from the outer index (curr node)
 	matrix.Graph = append(matrix.Graph, []int{
 		0, 3, 1, 0, 0, 0, 0, //0
 	})
