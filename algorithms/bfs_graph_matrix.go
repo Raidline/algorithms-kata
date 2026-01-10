@@ -10,7 +10,7 @@ func BfsGraph(graph model.WeightedAdjacencyMatrix, source int, needle int) ([]in
 	seen := make([]bool, len(graph.Graph))
 	prev := make([]int, len(graph.Graph))
 
-	fillIntArray(prev)
+	fillIntArray(prev, -1)
 
 	seen[source] = true
 	q := NewQueue()
@@ -60,8 +60,8 @@ func BfsGraph(graph model.WeightedAdjacencyMatrix, source int, needle int) ([]in
 	return out, nil
 }
 
-func fillIntArray(arr []int) {
+func fillIntArray(arr []int, v int) {
 	for i := range arr {
-		arr[i] = -1
+		arr[i] = v
 	}
 }
