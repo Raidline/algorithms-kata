@@ -5,6 +5,22 @@ import (
 	"testing"
 )
 
+func AssertValueWithError(t *testing.T, test string, want int, op func() (int, error)) {
+	got, err := op()
+
+	if err != nil && want != -1 {
+		t.Errorf("Testing %s, got err %s", test, err.Error())
+		debug.PrintStack()
+		t.FailNow()
+	}
+
+	if want != got {
+		t.Errorf("Testing %s, got %v, want %v", test, got, want)
+		debug.PrintStack()
+		t.FailNow()
+	}
+}
+
 func AssertValue(t *testing.T, test string, want int, op func() int) {
 	got := op()
 	if want != got {
