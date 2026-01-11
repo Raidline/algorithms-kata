@@ -8,7 +8,7 @@ import (
 func AssertValueWithError(t *testing.T, test string, want int, op func() (int, error)) {
 	got, err := op()
 
-	if err != nil && want != -1 {
+	if err != nil && want != 0 {
 		t.Errorf("Testing %s, got err %s", test, err.Error())
 		debug.PrintStack()
 		t.FailNow()

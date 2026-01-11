@@ -8,7 +8,7 @@ import (
 func TestLRU(t *testing.T) {
 	lru := NewLRU[string, int](3)
 
-	utils.AssertValueWithError(t, "LRU", -1, func() (int, error) {
+	utils.AssertValueWithError(t, "LRU", 0, func() (int, error) {
 		return lru.Get("foo")
 	})
 
@@ -34,7 +34,7 @@ func TestLRU(t *testing.T) {
 		return lru.Get("ball")
 	})
 
-	utils.AssertValueWithError(t, "LRU", -1, func() (int, error) {
+	utils.AssertValueWithError(t, "LRU", 0, func() (int, error) {
 		return lru.Get("foo")
 	})
 
@@ -53,7 +53,7 @@ func TestLRU(t *testing.T) {
 
 	// shouldn't of been deleted, but since bar was get'd, bar was added to the
 	// front of the list, so baz became the end
-	utils.AssertValueWithError(t, "LRU", -1, func() (int, error) {
+	utils.AssertValueWithError(t, "LRU", 0, func() (int, error) {
 		return lru.Get("baz")
 	})
 }
