@@ -13,7 +13,6 @@ type LRU[K comparable, V comparable] struct {
 	len        int
 	head       *LruNode[V]
 	tail       *LruNode[V]
-	items      []V
 	keyToValue map[K]*LruNode[V]
 	valueToMap map[*LruNode[V]]K
 }
@@ -45,9 +44,9 @@ func (l *LRU[K, V]) Update(key K, value V) {
 
 	if v, b := l.keyToValue[key]; b {
 		//put the hotest value to the front
-		v.value = value
 		l.detach(v)
 		l.prepend(v)
+		v.value = value
 	} else {
 		node := &LruNode[V]{
 			value: value,
@@ -103,7 +102,7 @@ func (l *LRU[K, V]) trimCache() {
 	}
 
 	tail := l.tail
-	l.detach(l.head)
+	l.detach(l.tail)
 
 	key := l.valueToMap[tail]
 	delete(l.keyToValue, key)
