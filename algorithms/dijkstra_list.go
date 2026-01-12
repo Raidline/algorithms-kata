@@ -10,7 +10,7 @@ import (
 // the runtime can be improved if we used a minHeap for this.
 // why? the minHeap will always have the min value at the top and by adding to the heap the seen nodes we do not have to keep the seen array
 // seeing if the node has been visited and getting the miniumn is O(V^2)
-// by using the minheap we can get that to O(log(V)) -> V being the edges
+// by using the minheap we can get that to O(log(V)) -> V being the vertices
 func DijkstraList(source int, sink int, arr model.WeightedAdjacencyList) []int {
 	seen := make([]bool, len(arr.Graph))
 	dists := make([]int, len(arr.Graph))
